@@ -1,0 +1,7 @@
+ "use client";
+import { useState } from "react";
+export default function TimestampConverter() {
+ const [value,setValue]=useState(String(Math.floor(Date.now()/1000))); const [result,setResult]=useState("");
+ const convert=()=>{const n=Number(value);if(!Number.isFinite(n)||!value.trim()){setResult("Enter a valid Unix timestamp.");return;}const ms=Math.abs(n)<1e11?n*1000:n;const d=new Date(ms);setResult(Number.isNaN(d.getTime())?"Timestamp is outside the supported date range.":`UTC: ${d.toISOString()}\nLocal time: ${d.toString()}\nMilliseconds: ${d.getTime()}`);};
+ return <main className="tool-page"><a className="back-link" href="/">← All tools</a><h1>Timestamp Converter</h1><p className="intro">Convert Unix timestamps in seconds or milliseconds into readable dates.</p><section className="tool-panel"><label htmlFor="timestamp">Unix timestamp</label><input id="timestamp" value={value} onChange={e=>setValue(e.target.value)} type="text"/><div className="button-row"><button onClick={convert}>Convert timestamp</button><button className="secondary" onClick={()=>setValue(String(Math.floor(Date.now()/1000)))}>Use current time</button></div>{result&&<div className="result" style={{whiteSpace:"pre-wrap"}}>{result}</div>}</section></main>;
+}

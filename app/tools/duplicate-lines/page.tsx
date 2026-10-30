@@ -1,0 +1,7 @@
+ "use client";
+import { useState } from "react";
+export default function DuplicateLines() {
+ const [input,setInput]=useState(""); const [output,setOutput]=useState("");
+ const run=()=>{const seen=new Set<string>(); const lines=input.split(/\r?\n/); const result=lines.filter(line=>{const key=line.trim(); if(!key) return true; if(seen.has(key)) return false; seen.add(key); return true;}); setOutput(result.join("\n"));};
+ return <main className="tool-page"><a className="back-link" href="/">← All tools</a><h1>Remove Duplicate Lines</h1><p className="intro">Remove repeated non-empty lines while preserving the first occurrence and original order.</p><section className="tool-panel"><label htmlFor="input">Input text</label><textarea id="input" value={input} onChange={e=>setInput(e.target.value)} placeholder="Paste lines here..."/><div className="button-row"><button onClick={run}>Remove duplicates</button><button className="secondary" onClick={()=>{setInput("");setOutput("");}}>Clear</button></div>{output!==""&&<><label style={{marginTop:18}} htmlFor="output">Result</label><textarea id="output" value={output} readOnly/><button style={{marginTop:10}} onClick={()=>navigator.clipboard.writeText(output)}>Copy result</button></>}</section></main>;
+}

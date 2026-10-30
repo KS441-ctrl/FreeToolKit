@@ -1,0 +1,7 @@
+ "use client";
+import { useState } from "react";
+export default function UrlEncoder() {
+ const [input,setInput]=useState(""); const [output,setOutput]=useState(""); const [mode,setMode]=useState("encode"); const [error,setError]=useState("");
+ const run=()=>{try{setError("");setOutput(mode==="encode"?encodeURIComponent(input):decodeURIComponent(input));}catch{setError("Could not decode this input. Check that percent-encoding is valid.");setOutput("");}};
+ return <main className="tool-page"><a className="back-link" href="/">← All tools</a><h1>URL Encoder / Decoder</h1><p className="intro">Encode text for use in URL components or decode percent-encoded text.</p><section className="tool-panel"><label htmlFor="mode">Action</label><select id="mode" value={mode} onChange={e=>setMode(e.target.value)} style={{width:"100%",padding:13,border:"1px solid #dce1ed",borderRadius:11,font:"inherit"}}><option value="encode">Encode</option><option value="decode">Decode</option></select><label style={{marginTop:16}} htmlFor="input">Input</label><textarea id="input" value={input} onChange={e=>setInput(e.target.value)} placeholder="Enter text or URL-encoded text..."/><button style={{marginTop:12}} onClick={run}>Convert</button>{error&&<p role="alert">{error}</p>}<label style={{marginTop:18}} htmlFor="output">Output</label><textarea id="output" value={output} readOnly/><button style={{marginTop:10}} className="secondary" onClick={()=>navigator.clipboard.writeText(output)} disabled={!output}>Copy output</button></section></main>;
+}

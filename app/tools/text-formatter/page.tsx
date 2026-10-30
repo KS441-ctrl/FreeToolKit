@@ -1,0 +1,6 @@
+ "use client";
+import { useState } from "react";
+export default function TextFormatter() {
+ const [input,setInput]=useState(""); const [output,setOutput]=useState("");
+ return <main className="tool-page"><a className="back-link" href="/">← All tools</a><h1>Text Formatter</h1><p className="intro">Clean up spacing and line breaks with a few simple formatting actions.</p><section className="tool-panel"><label htmlFor="text">Text</label><textarea id="text" value={input} onChange={e=>setInput(e.target.value)} placeholder="Paste text here..."/><div className="button-row"><button onClick={()=>setOutput(input.split(/\r?\n/).map(s=>s.trim().replace(/[ \t]+/g," ")).join("\n").replace(/\n{3,}/g,"\n\n"))}>Trim spaces</button><button className="secondary" onClick={()=>setOutput(input.replace(/[ \t]+/g," ").replace(/\s*\n\s*/g,"\n").trim())}>Normalize whitespace</button><button className="secondary" onClick={()=>setOutput(input.split(/\r?\n/).filter(s=>s.trim()).join("\n"))}>Remove blank lines</button></div><label style={{marginTop:18}} htmlFor="output">Formatted result</label><textarea id="output" value={output} onChange={e=>setOutput(e.target.value)} placeholder="Your result appears here..."/><button style={{marginTop:10}} onClick={()=>navigator.clipboard.writeText(output)} disabled={!output}>Copy result</button></section></main>;
+}

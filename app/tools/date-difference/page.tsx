@@ -1,0 +1,7 @@
+ "use client";
+import { useState } from "react";
+export default function DateDifference() {
+ const today=new Date().toISOString().slice(0,10);const [start,setStart]=useState(today);const [end,setEnd]=useState(today);const [result,setResult]=useState("");
+ const calc=()=>{if(!start||!end){setResult("Choose both dates.");return;}const a=new Date(start+"T00:00:00Z").getTime(),b=new Date(end+"T00:00:00Z").getTime();setResult(`${Math.abs(Math.round((b-a)/86400000))} days apart${a<=b?"":" (dates were reversed)"}.`);};
+ return <main className="tool-page"><a className="back-link" href="/">← All tools</a><h1>Date Difference Calculator</h1><p className="intro">Calculate the number of calendar days between two dates.</p><section className="tool-panel"><div className="form-grid"><div><label htmlFor="start">Start date</label><input id="start" type="date" value={start} onChange={e=>setStart(e.target.value)}/></div><div><label htmlFor="end">End date</label><input id="end" type="date" value={end} onChange={e=>setEnd(e.target.value)}/></div></div><button style={{marginTop:16}} onClick={calc}>Calculate difference</button>{result&&<div className="result" role="status">{result}</div>}</section></main>;
+}

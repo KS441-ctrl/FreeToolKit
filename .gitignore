@@ -1,0 +1,9 @@
+node_modules
+.next
+.next-*
+/public/pdf.worker.min.mjs
+out
+.env*
+build-error.txt
+*.tsbuildinfo
+.DS_Store

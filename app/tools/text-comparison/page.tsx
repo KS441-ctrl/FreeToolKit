@@ -1,0 +1,7 @@
+ "use client";
+import { useState } from "react";
+export default function TextComparison() {
+ const [a,setA]=useState(""); const [b,setB]=useState(""); const [result,setResult]=useState<string[]>([]);
+ const compare=()=>{const aa=a.split(/\r?\n/),bb=b.split(/\r?\n/);const n=Math.max(aa.length,bb.length);setResult(Array.from({length:n},(_,i)=>`${i+1}. ${aa[i]===bb[i]?"=":"≠"}  A: ${aa[i]??"(missing)"}  |  B: ${bb[i]??"(missing)"}`));};
+ return <main className="tool-page"><a className="back-link" href="/">← All tools</a><h1>Text Comparison</h1><p className="intro">Compare two texts line by line. Differences are marked with ≠.</p><section className="tool-panel"><div className="form-grid"><div><label htmlFor="a">Text A</label><textarea id="a" value={a} onChange={e=>setA(e.target.value)} placeholder="First text..."/></div><div><label htmlFor="b">Text B</label><textarea id="b" value={b} onChange={e=>setB(e.target.value)} placeholder="Second text..."/></div></div><div className="button-row"><button onClick={compare}>Compare texts</button><button className="secondary" onClick={()=>{setA("");setB("");setResult([]);}}>Clear</button></div>{result.length>0&&<div className="result" style={{whiteSpace:"pre-wrap"}}>{result.join("\n")}</div>}</section></main>;
+}

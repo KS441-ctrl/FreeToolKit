@@ -1,0 +1,36 @@
+import type { Metadata } from "next";
+export const metadata: Metadata={title:"Worldwide Affiliate Programs Directory",description:"Official affiliate network sign-up links and a practical checklist for Free Toolkit publishers."};
+type Program={name:string;region:string;bestFor:string;url:string;note?:string};
+const programs:Program[]=[
+{name:"Amazon Associates — India",region:"India",bestFor:"General products, office accessories, study supplies, and creator gear",url:"https://affiliate-program.amazon.in/"},
+{name:"Amazon Associates — United States",region:"United States",bestFor:"Broad consumer products",url:"https://affiliate-program.amazon.com/"},
+{name:"Amazon Associates — United Kingdom",region:"United Kingdom",bestFor:"Broad consumer products",url:"https://affiliate-program.amazon.co.uk/"},
+{name:"Amazon Associates — Canada",region:"Canada",bestFor:"Broad consumer products",url:"https://associates.amazon.ca/"},
+{name:"Amazon Associates — Australia",region:"Australia",bestFor:"Broad consumer products",url:"https://affiliate-program.amazon.com.au/"},
+{name:"Amazon Associates — Germany",region:"Germany",bestFor:"Broad consumer products",url:"https://partnernet.amazon.de/"},
+{name:"Amazon Associates — France",region:"France",bestFor:"Broad consumer products",url:"https://partenaires.amazon.fr/"},
+{name:"Amazon Associates — Italy",region:"Italy",bestFor:"Broad consumer products",url:"https://programma-affiliazione.amazon.it/"},
+{name:"Amazon Associates — Spain",region:"Spain",bestFor:"Broad consumer products",url:"https://afiliados.amazon.es/"},
+{name:"Amazon Associates — Japan",region:"Japan",bestFor:"Broad consumer products",url:"https://affiliate.amazon.co.jp/"},
+{name:"Amazon Associates — Singapore",region:"Singapore",bestFor:"Broad consumer products",url:"https://associates.amazon.sg/"},
+{name:"Amazon Associates — UAE",region:"United Arab Emirates",bestFor:"Broad consumer products",url:"https://associates.amazon.ae/"},
+{name:"Amazon Associates — Saudi Arabia",region:"Saudi Arabia",bestFor:"Broad consumer products",url:"https://associates.amazon.sa/"},
+{name:"Amazon Associates — Brazil",region:"Brazil",bestFor:"Broad consumer products",url:"https://associados.amazon.com.br/"},
+{name:"Amazon Associates — Mexico",region:"Mexico",bestFor:"Broad consumer products",url:"https://afiliados.amazon.com.mx/"},
+{name:"Amazon Associates — Netherlands",region:"Netherlands",bestFor:"Broad consumer products",url:"https://partnernet.amazon.nl/"},
+{name:"Amazon Associates — Sweden",region:"Sweden",bestFor:"Broad consumer products",url:"https://affiliate-program.amazon.se/"},
+{name:"Amazon Associates — Poland",region:"Poland",bestFor:"Broad consumer products",url:"https://affiliate-program.amazon.pl/"},
+{name:"Amazon Associates — China",region:"China",bestFor:"Broad consumer products",url:"https://associates.amazon.cn/"},
+{name:"Rakuten Advertising",region:"Global / market-dependent",bestFor:"Retail, fashion, lifestyle, and consumer brands",url:"https://rakutenadvertising.com/"},
+{name:"Awin",region:"International",bestFor:"Retail, travel, finance, software, and consumer brands",url:"https://www.awin.com/"},
+{name:"CJ Affiliate",region:"International",bestFor:"Established retail and service advertisers",url:"https://www.cj.com/join"},
+{name:"impact.com",region:"International",bestFor:"Software, subscriptions, direct-to-consumer and services",url:"https://impact.com/"},
+{name:"PartnerStack",region:"International",bestFor:"B2B SaaS and developer software",url:"https://partnerstack.com/our-partner-program/partners-affiliate"},
+{name:"FlexOffers",region:"International",bestFor:"Large advertiser catalog across many categories",url:"https://www.flexoffers.com/publishers/"},
+{name:"Admitad",region:"International / regional availability varies",bestFor:"E-commerce, travel, finance and digital services",url:"https://www.admitad.com/"},
+{name:"Involve Asia",region:"Southeast Asia",bestFor:"E-commerce and regional consumer brands",url:"https://involve.asia/"},
+{name:"vCommission",region:"India / international campaigns vary",bestFor:"Indian e-commerce, lead generation, travel and services",url:"https://www.vcommission.com/"},
+{name:"Cuelinks",region:"India",bestFor:"Indian publishers, commerce links and content monetization",url:"https://www.cuelinks.com/"},
+{name:"EarnKaro",region:"India",bestFor:"Deal sharing and social commerce; check website eligibility",url:"https://earnkaro.com/"},
+];
+export default function AffiliatePrograms(){return <main className="tool-page"><a className="back-link" href="/">← Home</a><h1>Affiliate Programs Directory</h1><p className="intro">A starter list of official publisher sign-up pages for monetizing a global tools website. Programs are not pre-approved; eligibility, countries, commission rates, payout methods, and advertiser availability vary.</p><section className="tool-panel"><h2 style={{marginTop:0}}>Best-fit first applications for Free Toolkit</h2><ol><li><strong>Amazon Associates India</strong> for relevant office, study, and creator accessories. Apply to additional Amazon country programs only when you have meaningful traffic in those markets.</li><li><strong>PartnerStack and impact.com</strong> for SaaS subscriptions and developer tools that genuinely fit your audience.</li><li><strong>Awin, CJ Affiliate, and Rakuten Advertising</strong> for a wider selection of retail and service advertisers.</li><li><strong>vCommission and Cuelinks</strong> for India-focused campaigns; consider Involve Asia if Southeast Asia becomes a real audience.</li></ol><p className="helper">Do not apply to every program at once. First publish a real domain, original tool pages, privacy/terms/contact details, and useful content. Apply only to advertisers that match your audience.</p></section><section className="section"><div className="section-head"><div><h2>Official program links</h2><p>Open the official site to review current terms and apply as a publisher.</p></div></div><div className="tool-grid">{programs.map(p=><article className="tool-card" key={p.name}><h3>{p.name}</h3><p><strong>Coverage:</strong> {p.region}</p><p>{p.bestFor}</p><a href={p.url} target="_blank" rel="noopener noreferrer">Official website ↗</a>{p.note&&<p className="helper">{p.note}</p>}</article>)}</div></section><section className="tool-panel"><h2 style={{marginTop:0}}>Before using affiliate links</h2><ul><li>Approval is not automatic; apply to individual advertiser programs where required.</li><li>Use each network's official link builder or product feed and keep the tracking parameters intact.</li><li>Place a clear commission disclosure close to affiliate recommendations and keep the full disclosure page updated.</li><li>Use <code>rel="sponsored nofollow"</code> on paid affiliate links.</li><li>Never add affiliate links to tool buttons or disguise ads as downloads. Keep tools usable without clicking ads.</li><li>Check local tax, payment, privacy, cookie-consent, and program-specific rules before launch.</li></ul><p className="helper">Amazon requires the relevant Associate disclosure wording for each marketplace you join. Check that marketplace's current operating agreement and use its exact required statement.</p></section></main>}
